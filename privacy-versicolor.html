@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Versicolor — Privacy Policy</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #121212;
+      --bg2: #1e1e1e;
+      --accent: #39FF14;
+      --text: rgba(255,255,255,0.85);
+      --text-muted: rgba(255,255,255,0.45);
+      --border: rgba(255,255,255,0.08);
+      --card: rgba(255,255,255,0.04);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    /* ── 헤더 ── */
+    header {
+      background: linear-gradient(135deg, #121212, #1a1a2e, #16213e);
+      padding: 56px 24px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    header .app-name {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      font-size: clamp(22px, 5vw, 32px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+    header p.subtitle {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── 언어 탭 ── */
+    .lang-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 24px 24px 16px;
+      position: sticky;
+      top: 0;
+      background-color: var(--bg);
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+    }
+    .lang-tab {
+      padding: 8px 28px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .lang-tab.active {
+      background: rgba(57,255,20,0.12);
+      border-color: rgba(57,255,20,0.5);
+      color: var(--accent);
+    }
+
+    /* ── 콘텐츠 ── */
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* ── 카드 ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      margin: 20px 0 8px;
+    }
+    h3:first-child { margin-top: 0; }
+
+    p { color: var(--text); margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      padding-left: 18px;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    ul:last-child { margin-bottom: 0; }
+    li { margin-bottom: 4px; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .updated {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* ── 연락처 카드 ── */
+    .contact-box {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(57,255,20,0.05);
+      border: 1px solid rgba(57,255,20,0.2);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-top: 8px;
+    }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(57,255,20,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .contact-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .contact-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* ── 푸터 ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 20px; }
+      .lang-tab { padding: 8px 16px; }
+      .contact-box { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="app-name" id="app-name">Versicolor · 다채화</p>
+  <h1 id="header-title">개인정보처리방침 &amp; 문의하기</h1>
+</header>
+
+<div class="lang-tabs">
+  <button class="lang-tab active" onclick="switchLang('ko', this)">한국어</button>
+  <button class="lang-tab" onclick="switchLang('en', this)">English</button>
+  <button class="lang-tab" onclick="switchLang('ja', this)">日本語</button>
+  <button class="lang-tab" onclick="switchLang('es', this)">Español</button>
+</div>
+
+<div class="content">
+
+  <!-- ════════════════════
+       한국어
+  ════════════════════ -->
+  <div class="section active" id="section-ko">
+    <p class="updated">최종 업데이트: 2026년 4월</p>
+
+    <div class="card">
+      <p class="card-title">개요</p>
+      <h2>개인정보처리방침</h2>
+      <p>
+        <strong>다채화 (Versicolor)</strong>(이하 "본 앱")은 이용자의 개인정보 보호를 중요하게 생각합니다.
+        본 방침은 본 앱이 수집하는 정보의 종류, 이용 방법, 보호 방법을 설명합니다.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">수집하는 정보</p>
+      <h3>앱 내부 저장 데이터</h3>
+      <p>본 앱은 이용자의 기기 내에만 다음 데이터를 저장합니다. 외부 서버로 전송되지 않습니다.</p>
+      <ul>
+        <li>게임 진행 상황 (스테이지, 레벨, 라운드 클리어 기록)</li>
+        <li>현재 게임 상태 (그리드, 남은 횟수)</li>
+        <li>앱 설정 (효과음, 햅틱, 언어)</li>
+      </ul>
+
+      <h3>광고 관련 데이터 (Google AdMob)</h3>
+      <p>
+        본 앱은 광고 서비스 제공을 위해 <strong>Google AdMob</strong>을 사용합니다.
+        AdMob은 광고 최적화를 위해 기기 식별자, 광고 상호작용 데이터 등을 수집할 수 있습니다.
+        이는 Google의 개인정보처리방침에 따라 처리됩니다.
+      </p>
+      <p>
+        Google 개인정보처리방침:
+        <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">수집하지 않는 정보</p>
+      <p>본 앱 개발자는 다음 정보를 수집하거나 저장하지 않습니다.</p>
+      <ul>
+        <li>이름, 이메일 주소 등 개인 식별 정보</li>
+        <li>위치 정보</li>
+        <li>카메라, 마이크, 연락처 등 민감한 기기 권한</li>
+        <li>계정 정보 (본 앱은 로그인 기능이 없습니다)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <p class="card-title">데이터 보관 및 삭제</p>
+      <p>
+        모든 게임 데이터는 이용자의 기기 내 로컬 저장소에 저장됩니다.
+        앱을 삭제하면 모든 로컬 데이터가 함께 삭제됩니다.
+        개발자는 이용자의 게임 데이터에 접근할 수 없습니다.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">아동 개인정보 보호</p>
+      <p>
+        본 앱은 만 14세 미만 아동으로부터 고의로 개인정보를 수집하지 않습니다.
+        만 14세 미만 아동이 본 앱을 이용할 경우, 부모 또는 법정대리인의 지도하에 이용하도록 권장합니다.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">방침 변경</p>
+      <p>
+        본 개인정보처리방침은 필요에 따라 변경될 수 있습니다.
+        변경 사항은 본 페이지에 업데이트되며, 중요한 변경의 경우 앱 업데이트를 통해 안내합니다.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">문의하기 / 고객 지원</p>
+      <h2>도움이 필요하신가요?</h2>
+      <p>게임 관련 문의, 버그 신고, 개인정보 관련 요청은 아래 이메일로 연락해 주세요. 최대한 빠르게 답변드리겠습니다.</p>
+      <div class="contact-box">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <p class="contact-label">개발자 이메일</p>
+          <a class="contact-value" href="mailto:nexus11.second@gmail.com">nexus11.second@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════
+       English
+  ════════════════════ -->
+  <div class="section" id="section-en">
+    <p class="updated">Last updated: April 2026</p>
+
+    <div class="card">
+      <p class="card-title">Overview</p>
+      <h2>Privacy Policy</h2>
+      <p>
+        <strong>Versicolor</strong> ("the App") is committed to protecting your privacy.
+        This policy explains what information we collect, how we use it, and how we protect it.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Information We Collect</p>
+      <h3>Data Stored Locally on Your Device</h3>
+      <p>The App stores the following data exclusively on your device. It is never transmitted to any external server.</p>
+      <ul>
+        <li>Game progress (stage, level, and round clear records)</li>
+        <li>Current game state (grid layout, remaining moves)</li>
+        <li>App settings (sound effects, haptics, language)</li>
+      </ul>
+
+      <h3>Advertising Data (Google AdMob)</h3>
+      <p>
+        The App uses <strong>Google AdMob</strong> to serve advertisements.
+        AdMob may collect device identifiers and ad interaction data to optimize ad delivery.
+        This data is handled in accordance with Google's Privacy Policy.
+      </p>
+      <p>
+        Google Privacy Policy:
+        <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Information We Do NOT Collect</p>
+      <p>The developer does not collect or store any of the following:</p>
+      <ul>
+        <li>Personal identifiers such as name or email address</li>
+        <li>Location data</li>
+        <li>Sensitive device permissions (camera, microphone, contacts, etc.)</li>
+        <li>Account credentials (the App has no login or account system)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Data Retention &amp; Deletion</p>
+      <p>
+        All game data is stored in your device's local storage only.
+        Uninstalling the App will permanently delete all locally stored data.
+        The developer has no access to your game data at any time.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Children's Privacy</p>
+      <p>
+        The App does not knowingly collect personal information from children under the age of 13.
+        If you are a parent or guardian and believe your child has provided personal information,
+        please contact us and we will take appropriate action.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Changes to This Policy</p>
+      <p>
+        This Privacy Policy may be updated from time to time.
+        Any changes will be reflected on this page. For significant updates,
+        we will notify users through an app update.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Contact &amp; Support</p>
+      <h2>Need Help?</h2>
+      <p>For any questions, bug reports, or privacy-related requests, please reach out via email. We'll get back to you as soon as possible.</p>
+      <div class="contact-box">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <p class="contact-label">Developer Email</p>
+          <a class="contact-value" href="mailto:nexus11.second@gmail.com">nexus11.second@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════
+       日本語
+  ════════════════════ -->
+  <div class="section" id="section-ja">
+    <p class="updated">最終更新日：2026年4月</p>
+
+    <div class="card">
+      <p class="card-title">概要</p>
+      <h2>プライバシーポリシー</h2>
+      <p>
+        <strong>Versicolor（ヴァーシカラー）</strong>（以下「本アプリ」）は、ユーザーのプライバシー保護を重要視しています。
+        本ポリシーは、本アプリが収集する情報の種類、利用方法、および保護方法について説明します。
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">収集する情報</p>
+      <h3>端末内に保存されるデータ</h3>
+      <p>本アプリは以下のデータをお使いの端末内にのみ保存します。外部サーバーへ送信されることはありません。</p>
+      <ul>
+        <li>ゲームの進行状況（ステージ・レベル・ラウンドのクリア記録）</li>
+        <li>現在のゲーム状態（グリッド配置・残り回数）</li>
+        <li>アプリ設定（効果音・ハプティクス・言語）</li>
+      </ul>
+
+      <h3>広告関連データ（Google AdMob）</h3>
+      <p>
+        本アプリは広告配信のために <strong>Google AdMob</strong> を使用しています。
+        AdMob は広告最適化のために端末識別子や広告インタラクションデータを収集する場合があります。
+        これらのデータは Google のプライバシーポリシーに基づいて処理されます。
+      </p>
+      <p>
+        Google プライバシーポリシー：
+        <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">収集しない情報</p>
+      <p>開発者は以下の情報を収集・保存しません。</p>
+      <ul>
+        <li>氏名・メールアドレスなどの個人識別情報</li>
+        <li>位置情報</li>
+        <li>カメラ・マイク・連絡先などの機密デバイス権限</li>
+        <li>アカウント情報（本アプリにはログイン機能がありません）</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <p class="card-title">データの保管と削除</p>
+      <p>
+        すべてのゲームデータはお使いの端末のローカルストレージにのみ保存されます。
+        アプリをアンインストールすると、すべてのローカルデータが完全に削除されます。
+        開発者はユーザーのゲームデータにアクセスすることはできません。
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">お子様のプライバシー</p>
+      <p>
+        本アプリは13歳未満のお子様から意図的に個人情報を収集しません。
+        保護者の方が、お子様が個人情報を提供したとお気づきの場合は、お気軽にご連絡ください。
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">ポリシーの変更</p>
+      <p>
+        本プライバシーポリシーは必要に応じて変更される場合があります。
+        変更内容はこのページに反映されます。重要な変更がある場合は、アプリのアップデートを通じてお知らせします。
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">お問い合わせ・サポート</p>
+      <h2>お困りですか？</h2>
+      <p>ゲームに関するご質問、バグ報告、プライバシーに関するお問い合わせは、下記メールアドレスまでご連絡ください。できる限り早くご返答いたします。</p>
+      <div class="contact-box">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <p class="contact-label">開発者メール</p>
+          <a class="contact-value" href="mailto:nexus11.second@gmail.com">nexus11.second@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════
+       Español
+  ════════════════════ -->
+  <div class="section" id="section-es">
+    <p class="updated">Última actualización: abril de 2026</p>
+
+    <div class="card">
+      <p class="card-title">Descripción General</p>
+      <h2>Política de Privacidad</h2>
+      <p>
+        <strong>Versicolor</strong> («la App») está comprometida con la protección de tu privacidad.
+        Esta política explica qué información recopilamos, cómo la usamos y cómo la protegemos.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Información que Recopilamos</p>
+      <h3>Datos Almacenados Localmente en tu Dispositivo</h3>
+      <p>La App almacena los siguientes datos exclusivamente en tu dispositivo. Nunca se transmiten a ningún servidor externo.</p>
+      <ul>
+        <li>Progreso del juego (registros de superación de fases, niveles y rondas)</li>
+        <li>Estado actual del juego (disposición de la cuadrícula, movimientos restantes)</li>
+        <li>Configuración de la App (efectos de sonido, hápticos, idioma)</li>
+      </ul>
+
+      <h3>Datos Publicitarios (Google AdMob)</h3>
+      <p>
+        La App utiliza <strong>Google AdMob</strong> para mostrar anuncios.
+        AdMob puede recopilar identificadores de dispositivo y datos de interacción con anuncios para optimizar su entrega.
+        Estos datos se procesan de acuerdo con la Política de Privacidad de Google.
+      </p>
+      <p>
+        Política de Privacidad de Google:
+        <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Información que NO Recopilamos</p>
+      <p>El desarrollador no recopila ni almacena ninguno de los siguientes datos:</p>
+      <ul>
+        <li>Identificadores personales como nombre o dirección de correo electrónico</li>
+        <li>Datos de ubicación</li>
+        <li>Permisos sensibles del dispositivo (cámara, micrófono, contactos, etc.)</li>
+        <li>Credenciales de cuenta (la App no tiene sistema de inicio de sesión)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Retención y Eliminación de Datos</p>
+      <p>
+        Todos los datos del juego se almacenan únicamente en el almacenamiento local de tu dispositivo.
+        Desinstalar la App eliminará permanentemente todos los datos almacenados localmente.
+        El desarrollador no tiene acceso a tus datos de juego en ningún momento.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Privacidad Infantil</p>
+      <p>
+        La App no recopila intencionalmente información personal de menores de 13 años.
+        Si eres padre o tutor y crees que tu hijo ha proporcionado información personal,
+        contáctanos y tomaremos las medidas adecuadas.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Cambios en esta Política</p>
+      <p>
+        Esta Política de Privacidad puede actualizarse periódicamente.
+        Cualquier cambio se reflejará en esta página. Para actualizaciones significativas,
+        notificaremos a los usuarios a través de una actualización de la App.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Contacto y Soporte</p>
+      <h2>¿Necesitas ayuda?</h2>
+      <p>Para cualquier pregunta, reporte de errores o solicitud relacionada con la privacidad, contáctanos por correo electrónico. Te responderemos lo antes posible.</p>
+      <div class="contact-box">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <p class="contact-label">Correo del Desarrollador</p>
+          <a class="contact-value" href="mailto:nexus11.second@gmail.com">nexus11.second@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2025 Versicolor · <a href="mailto:nexus11.second@gmail.com">nexus11.second@gmail.com</a>
+</footer>
+
+<script>
+  const headerTitles = {
+    ko: '개인정보처리방침 &amp; 문의하기',
+    en: 'Privacy Policy &amp; Support',
+    ja: 'プライバシーポリシー &amp; お問い合わせ',
+    es: 'Política de Privacidad &amp; Soporte',
+  };
+
+  const appNames = {
+    ko: 'Versicolor · 다채화',
+    en: 'Versicolor',
+    ja: 'Versicolor · ヴァーシカラー',
+    es: 'Versicolor',
+  };
+
+  function switchLang(lang, btn) {
+    document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('section-' + lang).classList.add('active');
+    btn.classList.add('active');
+    document.documentElement.lang = lang;
+    document.getElementById('header-title').innerHTML = headerTitles[lang];
+    document.getElementById('app-name').textContent = appNames[lang];
+  }
+</script>
+
+</body>
+</html>
