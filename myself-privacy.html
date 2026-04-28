@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Myself — Privacy Policy</title>
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --surface: #ffffff;
+      --border: #e5e5e5;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --radius: 12px;
+      --max-width: 720px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0f0f;
+        --surface: #1a1a1a;
+        --border: #2d2d2d;
+        --text: #e8e8e8;
+        --muted: #9ca3af;
+        --accent: #60a5fa;
+        --accent-light: #1e2d40;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR",
+        "Noto Sans", sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .app-name {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .app-name span {
+      color: var(--accent);
+    }
+
+    /* ── Language Toggle ── */
+    .lang-toggle {
+      display: flex;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .lang-toggle button {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .lang-toggle button.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ── Main ── */
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .hero .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hero .updated {
+      display: inline-block;
+      margin-top: 12px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h2 .icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .card ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .card ul li {
+      font-size: 15px;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    /* ── Highlight Box ── */
+    .highlight {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    /* ── Contact ── */
+    .contact-link {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Language Section Visibility ── */
+    .lang-ko,
+    .lang-en {
+      display: none;
+    }
+
+    body[data-lang="ko"] .lang-ko {
+      display: block;
+    }
+
+    body[data-lang="en"] .lang-en {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 32px 16px 64px;
+      }
+
+      .card {
+        padding: 20px 20px;
+      }
+
+      .hero h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body data-lang="ko">
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="app-name"><span>Myself</span></div>
+      <div class="lang-toggle">
+        <button class="active" onclick="setLang('ko')">한국어</button>
+        <button onclick="setLang('en')">English</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ══════════════════════════════════════
+         KOREAN
+    ══════════════════════════════════════ -->
+    <div class="lang-ko">
+
+      <div class="hero">
+        <h1>개인정보 처리방침</h1>
+        <p class="subtitle">Myself: 나에게 쓰는 편지 · 나 자신과의 P2P 메시지 앱</p>
+        <span class="updated">최종 수정: 2026년 4월</span>
+      </div>
+
+      <!-- 개요 -->
+      <div class="card">
+        <h2><span class="icon">📋</span>개요</h2>
+        <p>
+          Myself는 서버 없이 내 기기끼리만 메시지를 동기화하는 개인 메시징 앱입니다.
+          이 방침은 앱이 어떤 정보를 다루는지, 그리고 여러분의 프라이버시를
+          어떻게 보호하는지를 설명합니다.
+        </p>
+        <div class="highlight">
+          핵심 원칙: <strong>여러분의 데이터는 여러분의 기기에만 존재합니다.</strong>
+          Myself는 어떠한 중앙 서버도, 클라우드 스토리지도 사용하지 않습니다.
+        </div>
+      </div>
+
+      <!-- 수집하는 정보 -->
+      <div class="card">
+        <h2><span class="icon">📦</span>앱이 저장하는 정보</h2>
+        <p>
+          아래 정보는 앱 기능 제공을 위해 <strong>기기 내부에만</strong> 저장됩니다.
+          외부 서버로 전송되지 않습니다.
+        </p>
+
+        <h3>메시지 및 첨부파일</h3>
+        <ul>
+          <li>텍스트 메시지</li>
+          <li>이미지, 동영상, 파일 첨부</li>
+          <li>리마인더 날짜·시간</li>
+          <li>링크 프리뷰 캐시 (URL의 제목·이미지)</li>
+        </ul>
+
+        <h3>앱 설정</h3>
+        <ul>
+          <li>테마 설정 (라이트 / 다크 / 시스템)</li>
+          <li>언어 설정 (한국어 / 영어)</li>
+          <li>동기화 ID 목록 (사용자가 직접 생성하는 임의 식별자)</li>
+        </ul>
+      </div>
+
+      <!-- 수집하지 않는 정보 -->
+      <div class="card">
+        <h2><span class="icon">🚫</span>수집하지 않는 정보</h2>
+        <p>Myself는 다음 정보를 <strong>일절 수집하지 않습니다.</strong></p>
+        <ul>
+          <li>이름, 이메일, 전화번호 등 개인 식별 정보</li>
+          <li>위치 정보 (GPS 등)</li>
+          <li>기기 고유 식별자 (광고 ID, IMEI 등)</li>
+          <li>연락처, 캘린더 등 민감한 기기 정보</li>
+          <li>사용 통계, 충돌 로그, 분석 데이터</li>
+          <li>계정 또는 로그인 자격 증명</li>
+        </ul>
+        <div class="highlight">
+          Myself에는 광고, 애널리틱스, 제3자 추적 SDK가 포함되어 있지 않습니다.
+        </div>
+      </div>
+
+      <!-- P2P 동기화 -->
+      <div class="card">
+        <h2><span class="icon">📡</span>P2P 동기화 방식</h2>
+        <p>
+          같은 Wi-Fi 네트워크에 연결된 내 기기들은 mDNS(Zeroconf)로 서로를 발견하고,
+          TCP 직접 연결로 메시지를 동기화합니다.
+        </p>
+        <ul>
+          <li>메시지는 기기 간 직접 전송됩니다. 중간 서버가 없습니다.</li>
+          <li>동기화 ID가 일치하는 기기끼리만 연결됩니다.</li>
+          <li>로컬 네트워크 밖으로 데이터가 나가지 않습니다.</li>
+        </ul>
+      </div>
+
+      <!-- 데이터 보관 및 삭제 -->
+      <div class="card">
+        <h2><span class="icon">🗑️</span>데이터 보관 및 삭제</h2>
+        <p>
+          모든 데이터는 기기의 앱 내부 저장소에 보관됩니다.
+          앱을 삭제하면 모든 메시지와 파일이 함께 삭제됩니다.
+        </p>
+        <p>
+          외부 서버에 저장된 데이터가 없으므로, 별도의 계정 삭제 절차가 필요하지 않습니다.
+        </p>
+      </div>
+
+      <!-- 아동 개인정보 -->
+      <div class="card">
+        <h2><span class="icon">👶</span>아동 개인정보 보호</h2>
+        <p>
+          Myself는 어떠한 개인정보도 수집하지 않으므로,
+          만 14세 미만 아동이 사용하더라도 개인정보 수집이 발생하지 않습니다.
+        </p>
+      </div>
+
+      <!-- 방침 변경 -->
+      <div class="card">
+        <h2><span class="icon">📝</span>방침 변경</h2>
+        <p>
+          이 방침은 변경될 수 있습니다. 중요한 변경이 있을 경우
+          앱 업데이트 노트 또는 이 페이지를 통해 안내드립니다.
+          변경 후 앱을 계속 사용하시면 개정된 방침에 동의한 것으로 간주됩니다.
+        </p>
+      </div>
+
+      <!-- 문의 -->
+      <div class="card">
+        <h2><span class="icon">✉️</span>문의 및 지원</h2>
+        <p>
+          개인정보 처리방침에 관한 문의 또는 앱 관련 지원이 필요하시면
+          아래 이메일로 연락해 주세요.
+        </p>
+        <a class="contact-link" href="mailto:nexus11.second@gmail.com">
+          nexus11.second@gmail.com
+        </a>
+      </div>
+
+    </div><!-- /lang-ko -->
+
+
+    <!-- ══════════════════════════════════════
+         ENGLISH
+    ══════════════════════════════════════ -->
+    <div class="lang-en">
+
+      <div class="hero">
+        <h1>Privacy Policy</h1>
+        <p class="subtitle">Myself: For me · A P2P personal messenger</p>
+        <span class="updated">Last updated: April 2026</span>
+      </div>
+
+      <!-- Overview -->
+      <div class="card">
+        <h2><span class="icon">📋</span>Overview</h2>
+        <p>
+          Myself is a personal messaging app that syncs messages directly between
+          your own devices — no server required. This policy explains what
+          information the app handles and how your privacy is protected.
+        </p>
+        <div class="highlight">
+          Core principle: <strong>Your data lives only on your devices.</strong>
+          Myself uses no central server and no cloud storage.
+        </div>
+      </div>
+
+      <!-- What we store -->
+      <div class="card">
+        <h2><span class="icon">📦</span>Information Stored by the App</h2>
+        <p>
+          The following data is stored <strong>on your device only</strong>
+          to provide app functionality. It is never sent to external servers.
+        </p>
+
+        <h3>Messages &amp; Attachments</h3>
+        <ul>
+          <li>Text messages</li>
+          <li>Images, videos, and file attachments</li>
+          <li>Reminder dates and times</li>
+          <li>Link preview cache (title and thumbnail for URLs)</li>
+        </ul>
+
+        <h3>App Settings</h3>
+        <ul>
+          <li>Theme preference (Light / Dark / System)</li>
+          <li>Language preference (Korean / English)</li>
+          <li>Sync ID list (arbitrary identifiers you create yourself)</li>
+        </ul>
+      </div>
+
+      <!-- What we don't collect -->
+      <div class="card">
+        <h2><span class="icon">🚫</span>Information We Do NOT Collect</h2>
+        <p>Myself does <strong>not</strong> collect any of the following:</p>
+        <ul>
+          <li>Personal identifiers (name, email, phone number, etc.)</li>
+          <li>Location data (GPS or otherwise)</li>
+          <li>Device identifiers (advertising ID, IMEI, etc.)</li>
+          <li>Sensitive device data (contacts, calendar, etc.)</li>
+          <li>Usage analytics, crash logs, or diagnostic data</li>
+          <li>Account credentials or login information</li>
+        </ul>
+        <div class="highlight">
+          Myself contains no advertising SDK, no analytics SDK,
+          and no third-party tracking of any kind.
+        </div>
+      </div>
+
+      <!-- P2P Sync -->
+      <div class="card">
+        <h2><span class="icon">📡</span>How P2P Sync Works</h2>
+        <p>
+          Devices on the same Wi-Fi network discover each other via mDNS (Zeroconf)
+          and sync messages over a direct TCP connection.
+        </p>
+        <ul>
+          <li>Messages are transferred directly between your devices. No middleman.</li>
+          <li>Only devices sharing the same Sync ID can connect to each other.</li>
+          <li>No data leaves your local network.</li>
+        </ul>
+      </div>
+
+      <!-- Data retention -->
+      <div class="card">
+        <h2><span class="icon">🗑️</span>Data Retention &amp; Deletion</h2>
+        <p>
+          All data is stored in the app's internal storage on your device.
+          Deleting the app removes all messages and files along with it.
+        </p>
+        <p>
+          Since no data is stored on external servers, there is no account
+          or server-side deletion process required.
+        </p>
+      </div>
+
+      <!-- Children -->
+      <div class="card">
+        <h2><span class="icon">👶</span>Children's Privacy</h2>
+        <p>
+          Because Myself collects no personal information whatsoever,
+          use by children under the age of 13 does not result in any
+          collection of personal data.
+        </p>
+      </div>
+
+      <!-- Policy changes -->
+      <div class="card">
+        <h2><span class="icon">📝</span>Changes to This Policy</h2>
+        <p>
+          This policy may be updated from time to time. When significant changes
+          are made, we will notify you through app release notes or by updating
+          this page. Continued use of the app after changes constitutes
+          acceptance of the revised policy.
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <div class="card">
+        <h2><span class="icon">✉️</span>Contact &amp; Support</h2>
+        <p>
+          If you have questions about this privacy policy or need support,
+          feel free to reach out via email.
+        </p>
+        <a class="contact-link" href="mailto:nexus11.second@gmail.com">
+          nexus11.second@gmail.com
+        </a>
+      </div>
+
+    </div><!-- /lang-en -->
+
+  </main>
+
+  <footer>
+    &copy; 2026 Myself · nexus11.second@gmail.com
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+      document.querySelectorAll('.lang-toggle button').forEach(function (btn) {
+        btn.classList.toggle('active', btn.textContent.trim() === (lang === 'ko' ? '한국어' : 'English'));
+      });
+    }
+
+    // Initialize from browser language preference
+    (function () {
+      var preferred = navigator.language || navigator.userLanguage || 'ko';
+      setLang(preferred.startsWith('ko') ? 'ko' : 'en');
+    })();
+  </script>
+
+</body>
+</html>
