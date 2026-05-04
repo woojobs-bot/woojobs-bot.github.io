@@ -59,6 +59,7 @@
     "desc": "서버 없이 내 기기끼리만 동기화하는 P2P 개인 메시지 앱.",
     "icon": "assets/icon-myself.png",
     "appstore": "준비중",
+    "macstore": "준비중",
     "playstore": "https://play.google.com/store/apps/details?id=com.woojobs.myself",
     "type": "유틸리티"
   },
