@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monthly LEE JINWOO · 2026</title>
+  <meta name="description" content="2026년에 이진우가 만든 앱들" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080808; --surface: #111111; --surface2: #181818;
+      --border: rgba(255,255,255,0.07); --text: rgba(255,255,255,0.87);
+      --muted: rgba(255,255,255,0.42);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6; min-height: 100vh;
+    }
+    .top-nav {
+      border-bottom: 1px solid var(--border); height: 52px;
+      display: flex; align-items: center; padding: 0 24px;
+      position: sticky; top: 0; background: var(--bg); z-index: 10;
+    }
+    .nav-inner {
+      max-width: 880px; width: 100%; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .back-link { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .back-link:hover { color: var(--text); }
+    .nav-label { font-size: 12px; color: rgba(255,255,255,0.2); letter-spacing: 0.5px; }
+    .hero { max-width: 800px; margin: 0 auto; padding: 72px 24px 56px; text-align: center; }
+    .monthly-tag {
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 9vw, 72px); font-weight: 800;
+      letter-spacing: -2px; line-height: 1.05;
+      background: linear-gradient(160deg, #ffffff 30%, rgba(255,255,255,0.45) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 12px;
+    }
+    .hero-sub { font-size: 15px; color: var(--muted); }
+
+    /* Month Grid */
+    .month-section { max-width: 880px; margin: 0 auto; padding: 0 24px 48px; }
+    .section-label {
+      font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 20px;
+    }
+    .month-grid {
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px;
+    }
+    @media (max-width: 600px) { .month-grid { grid-template-columns: repeat(4, 1fr); } }
+    .month-item {
+      display: block; padding: 16px 8px;
+      border-radius: 12px; border: 1px solid var(--border);
+      background: var(--surface); text-align: center; text-decoration: none;
+      color: var(--muted); transition: all 0.2s;
+    }
+    .month-item.has-apps {
+      color: var(--text); border-color: rgba(255,255,255,0.1);
+    }
+    .month-item.has-apps:hover {
+      border-color: rgba(255,255,255,0.2); transform: translateY(-2px);
+    }
+    .month-item:not(.has-apps):hover {
+      border-color: rgba(255,255,255,0.1);
+    }
+    .mi-name { font-size: 12px; font-weight: 500; margin-bottom: 4px; }
+    .mi-count { font-size: 10px; }
+
+    /* Apps */
+    .apps { max-width: 880px; margin: 0 auto; padding: 0 24px 96px; }
+    .apps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    @media (max-width: 580px) { .apps-grid { grid-template-columns: 1fr; } }
+    .app-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 18px; padding: 26px;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .app-card:hover { border-color: rgba(255,255,255,0.13); transform: translateY(-3px); }
+    .app-card::after {
+      content: ''; position: absolute; inset: 0; border-radius: inherit;
+      background: radial-gradient(ellipse at top left, var(--card-glow,transparent) 0%, transparent 60%);
+      pointer-events: none; opacity: 0.1;
+    }
+    .app-icon {
+      width: 54px; height: 54px; border-radius: 14px; overflow: hidden;
+      flex-shrink: 0; margin-bottom: 16px; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .app-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .letter-icon {
+      width: 100%; height: 100%; display: flex;
+      align-items: center; justify-content: center; font-size: 22px; font-weight: 700;
+    }
+    .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
+    .app-type {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+      padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border);
+      color: var(--muted); background: var(--surface2); white-space: nowrap; align-self: flex-start;
+    }
+    .app-name { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.3px; margin-bottom: 2px; }
+    .app-name-sub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+    .app-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; flex: 1; margin-bottom: 20px; }
+    .badges { display: flex; gap: 7px; flex-wrap: wrap; margin-top: auto; }
+    .store-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--surface2); font-size: 12px; font-weight: 500;
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s; white-space: nowrap;
+    }
+    .store-badge:hover { border-color: rgba(255,255,255,0.25); color: #fff; background: rgba(255,255,255,0.05); }
+    .store-badge.disabled { opacity: 0.35; cursor: default; pointer-events: none; }
+    .store-badge svg { flex-shrink: 0; opacity: 0.75; }
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 24px;
+      text-align: center; font-size: 13px; color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--text); }
+    .footer-inner { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .footer-sep { opacity: 0.3; }
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <a href="../../" class="back-link">← woojobs-bot</a>
+      <span class="nav-label">Monthly LEE JINWOO</span>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="monthly-tag">Monthly LEE JINWOO</div>
+    <h1>2026</h1>
+    <p class="hero-sub">이진우가 2026년에 만든 앱들</p>
+  </section>
+
+  <div class="month-section">
+    <p class="section-label">Months</p>
+    <div class="month-grid">
+      <a href="01/" class="month-item has-apps">
+        <div class="mi-name">Jan</div>
+        <div class="mi-count">앱 1개</div>
+      </a>
+      <a href="02/" class="month-item has-apps">
+        <div class="mi-name">Feb</div>
+        <div class="mi-count">앱 1개</div>
+      </a>
+      <a href="03/" class="month-item has-apps">
+        <div class="mi-name">Mar</div>
+        <div class="mi-count">앱 2개</div>
+      </a>
+      <a href="04/" class="month-item has-apps">
+        <div class="mi-name">Apr</div>
+        <div class="mi-count">앱 1개</div>
+      </a>
+      <a href="05/" class="month-item has-apps">
+        <div class="mi-name">May</div>
+        <div class="mi-count">앱 1개</div>
+      </a>
+      <a href="06/" class="month-item has-apps">
+        <div class="mi-name">Jun</div>
+        <div class="mi-count">준비중</div>
+      </a>
+      <a href="07/" class="month-item has-apps">
+        <div class="mi-name">Jul</div>
+        <div class="mi-count">준비중</div>
+      </a>
+      <a href="08/" class="month-item">
+        <div class="mi-name">Aug</div>
+        <div class="mi-count">—</div>
+      </a>
+      <a href="09/" class="month-item">
+        <div class="mi-name">Sep</div>
+        <div class="mi-count">—</div>
+      </a>
+      <a href="10/" class="month-item">
+        <div class="mi-name">Oct</div>
+        <div class="mi-count">—</div>
+      </a>
+      <a href="11/" class="month-item">
+        <div class="mi-name">Nov</div>
+        <div class="mi-count">—</div>
+      </a>
+      <a href="12/" class="month-item">
+        <div class="mi-name">Dec</div>
+        <div class="mi-count">—</div>
+      </a>
+    </div>
+  </div>
+
+  <main class="apps">
+    <p class="section-label">All Apps</p>
+    <div class="apps-grid" id="apps-grid"></div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Nexus11.StandAlone</span>
+      <span class="footer-sep">·</span>
+      <a href="mailto:nexus11.second@gmail.com">nexus11.second@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const COLORS = {
+      flychick:'#fbbf24',todaycalendar:'#3b82f6',targetprime:'#f59e0b',
+      versicolor:'#39ff14',kbaseball:'#ef4444',superdownloader:'#a855f7',
+      myself:'#818cf8',themoment:'#14b8a6',
+    };
+    const PLAY=`<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.35.2.76.22 1.12.07l11.4-6.58-2.5-2.5-10.02 9.01zm-1.5-20.3C1.26 3.9 1 4.46 1 5.16v13.68c0 .7.26 1.26.68 1.7l.09.08 7.66-7.66v-.18L1.68 5.46zm16.64 9.06l-2.58-2.58-2.58 2.58 2.58 2.58 2.58-2.58zm-2.58-10.04L4.3.24C3.94.09 3.53.11 3.18.31L13.2 10.33l2.54-2.55 2.54 2.55-.01.01 1.5-.87c.77-.45.78-1.56.01-2.01z"/></svg>`;
+    const APPLE=`<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>`;
+
+    function badge(url, label, icon) {
+      if (!url || url==='없음') return '';
+      if (url==='준비중') return `<span class="store-badge disabled">${icon} ${label} 준비중</span>`;
+      return `<a class="store-badge" href="${url}" target="_blank" rel="noopener">${icon} ${label}</a>`;
+    }
+    function card(app) {
+      const c = COLORS[app.key] || '#6366f1';
+      const base = '../../';
+      const icon = app.icon
+        ? `<img src="${base}${app.icon}" alt="${app.name.en}" onerror="fb(this,'${app.name.en[0]}','${c}')">`
+        : `<span class="letter-icon" style="background:${c}18;color:${c}">${app.name.en[0]}</span>`;
+      return `<div class="app-card" style="--card-glow:${c}">
+        <div class="card-header"><div class="app-icon">${icon}</div><span class="app-type">${app.type}</span></div>
+        <div class="app-name">${app.name.en}</div>
+        <div class="app-name-sub">${app.name.ko}</div>
+        ${app.desc?`<div class="app-desc">${app.desc}</div>`:''}
+        <div class="badges">
+          ${badge(app.playstore,'Google Play',PLAY)}
+          ${badge(app.appstore,'App Store',APPLE)}
+          ${badge(app.macstore,'Mac App Store',APPLE)}
+        </div>
+      </div>`;
+    }
+    function fb(img, l, c) { img.parentElement.innerHTML=`<span class="letter-icon" style="background:${c}18;color:${c}">${l}</span>`; }
+
+    const APPS = [
+      {key:"flychick",name:{ko:"날아라병아리",en:"Flychick"},desc:"날아다니는 병아리를 조종하는 캐주얼 아케이드 게임.",icon:"assets/icon-flychick.png",appstore:"없음",playstore:"https://play.google.com/store/apps/details?id=com.woojobs.flychick",type:"게임"},
+      {key:"todaycalendar",name:{ko:"오늘 달력",en:"Today Calendar"},desc:"나만의 기념일·공휴일·알림을 서버 없이 관리하는 달력 앱.",icon:"assets/icon-todaycalendar.png",appstore:"https://apps.apple.com/kr/app/%EC%98%A4%EB%8A%98%EB%8B%AC%EB%A0%A5/id6760771539",playstore:"https://play.google.com/store/apps/details?id=com.woojobs.todaycalendar",type:"유틸리티"},
+      {key:"kbaseball",name:{ko:"야구정보",en:"K-Baseball"},desc:"KBO 리그 일정·순위·선수 정보를 한눈에 볼 수 있는 야구 정보 앱.",icon:"assets/icon-kbaseball.png",appstore:"없음",playstore:"없음",type:"유틸리티"},
+      {key:"superdownloader",name:{ko:"수퍼다운로더",en:"SuperDownloader"},desc:"동영상·파일을 빠르게 내 기기에 저장하는 다운로드 매니저.",icon:"assets/icon-superdownloader.png",appstore:"없음",playstore:"없음",type:"유틸리티"},
+      {key:"targetprime",name:{ko:"타겟:프라임",en:"Target:Prime"},desc:"스테이지를 클리어하고 아이템과 별을 수집하는 퍼즐 게임.",icon:"assets/icon-targetprime.png",appstore:"https://apps.apple.com/kr/app/%ED%83%80%EA%B2%9F-%ED%94%84%EB%9D%BC%EC%9E%84-target-prime/id6761228388",playstore:"https://play.google.com/store/apps/details?id=com.woojobs.makingNumber",type:"게임"},
+      {key:"versicolor",name:{ko:"다채화",en:"Versicolor"},desc:"레벨과 라운드를 클리어하며 즐기는 캐주얼 퍼즐 게임.",icon:"assets/icon-versicolor.png",appstore:"https://apps.apple.com/kr/app/%EB%8B%A4%EC%B1%84%ED%99%94-%EB%B2%84%EC%8B%9C%EC%BB%AC%EB%9F%AC/id6761609235",playstore:"https://play.google.com/store/apps/details?id=com.woojobs.versicolor",type:"게임"},
+      {key:"myself",name:{ko:"나에게 쓰는 편지",en:"Myself"},desc:"서버 없이 내 기기끼리만 동기화하는 P2P 개인 메시지 앱.",icon:"assets/icon-myself.png",appstore:"준비중",macstore:"준비중",playstore:"https://play.google.com/store/apps/details?id=com.woojobs.myself",type:"유틸리티"},
+      {key:"themoment",name:{ko:"The Moment",en:"The Moment"},desc:"",icon:"assets/icon-themoment.png",appstore:"준비중",playstore:"준비중",type:"게임"}
+    ];
+    document.getElementById('apps-grid').innerHTML = APPS.map(card).join('');
+  </script>
+
+</body>
+</html>
