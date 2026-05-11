@@ -83,168 +83,36 @@
       line-height: 1.7;
     }
 
-    /* ── Apps Section ── */
-    .apps {
-      max-width: 880px;
-      margin: 0 auto;
+    /* ── Year Nav ── */
+    .year-nav {
+      display: flex;
+      justify-content: center;
       padding: 0 24px 96px;
     }
 
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
-    .apps-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-
-    @media (max-width: 580px) {
-      .apps-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ── App Card ── */
-    .app-card {
-      background: var(--surface);
+    .year-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      border-radius: 16px;
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.25s, transform 0.25s;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      transition: border-color 0.25s, transform 0.25s, background 0.25s;
     }
 
-    .app-card:hover {
-      border-color: rgba(255, 255, 255, 0.13);
+    .year-btn:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      background: var(--surface2);
       transform: translateY(-3px);
     }
 
-    .app-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: radial-gradient(ellipse at top left, var(--card-glow, transparent) 0%, transparent 60%);
-      pointer-events: none;
-      opacity: 0.1;
-    }
-
-    .app-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
-      overflow: hidden;
-      flex-shrink: 0;
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .app-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .letter-icon {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: 700;
-      border-radius: 13px;
-    }
-
-    .card-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-
-    .app-type {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      background: var(--surface2);
-      white-space: nowrap;
-      align-self: flex-start;
-    }
-
-    .app-name {
-      font-size: 18px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.3px;
-      margin-bottom: 2px;
-    }
-
-    .app-name-sub {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .app-desc {
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.45);
-      line-height: 1.6;
-      flex: 1;
-      margin-bottom: 20px;
-    }
-
-    /* ── Store Badges ── */
-    .badges {
-      display: flex;
-      gap: 7px;
-      flex-wrap: wrap;
-      margin-top: auto;
-    }
-
-    .store-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 6px 12px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--surface2);
-      font-size: 12px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.6);
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-      white-space: nowrap;
-    }
-
-    .store-badge:hover {
-      border-color: rgba(255, 255, 255, 0.25);
-      color: #fff;
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .store-badge.disabled {
-      opacity: 0.35;
-      cursor: default;
-      pointer-events: none;
-    }
-
-    .store-badge svg { flex-shrink: 0; opacity: 0.75; }
+    .year-btn svg { opacity: 0.5; }
 
     /* ── Footer ── */
     footer {
@@ -282,9 +150,11 @@
     <p>Serverless-first mobile apps.<br>No backend, no login, no tracking — just your device.</p>
   </section>
 
-  <main class="apps">
-    <p class="section-label">Apps</p>
-    <div class="apps-grid" id="apps-grid"></div>
+  <main class="year-nav">
+    <a class="year-btn" href="date/2026/">
+      2026
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
   </main>
 
   <footer>
@@ -295,66 +165,6 @@
     </div>
   </footer>
 
-  <script>
-    const COLORS = {
-      flychick:        '#fbbf24',
-      todaycalendar:   '#3b82f6',
-      targetprime:     '#f59e0b',
-      versicolor:      '#39ff14',
-      kbaseball:       '#ef4444',
-      superdownloader: '#a855f7',
-      myself:          '#818cf8',
-      themoment:       '#14b8a6',
-    };
-
-    const PLAY_SVG = `<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.35.2.76.22 1.12.07l11.4-6.58-2.5-2.5-10.02 9.01zm-1.5-20.3C1.26 3.9 1 4.46 1 5.16v13.68c0 .7.26 1.26.68 1.7l.09.08 7.66-7.66v-.18L1.68 5.46zm16.64 9.06l-2.58-2.58-2.58 2.58 2.58 2.58 2.58-2.58zm-2.58-10.04L4.3.24C3.94.09 3.53.11 3.18.31L13.2 10.33l2.54-2.55 2.54 2.55-.01.01 1.5-.87c.77-.45.78-1.56.01-2.01z"/></svg>`;
-    const APPLE_SVG = `<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>`;
-
-    function storeBadge(url, label, iconSvg) {
-      if (!url || url === '없음') return '';
-      if (url === '준비중') {
-        return `<span class="store-badge disabled">${iconSvg} ${label} 준비중</span>`;
-      }
-      return `<a class="store-badge" href="${url}" target="_blank" rel="noopener">${iconSvg} ${label}</a>`;
-    }
-
-    function cardHtml(app) {
-      const color = COLORS[app.key] || (app.type === '게임' ? '#f59e0b' : '#6366f1');
-      const iconContent = app.icon
-        ? `<img src="${app.icon}" alt="${app.name.en}" onerror="iconFallback(this,'${app.name.en[0]}','${color}')" />`
-        : `<span class="letter-icon" style="background:${color}18;color:${color}">${app.name.en[0]}</span>`;
-
-      const descHtml = app.desc
-        ? `<div class="app-desc">${app.desc}</div>`
-        : '';
-
-      return `
-        <div class="app-card" style="--card-glow:${color}">
-          <div class="card-header">
-            <div class="app-icon">${iconContent}</div>
-            <span class="app-type">${app.type}</span>
-          </div>
-          <div class="app-name">${app.name.en}</div>
-          <div class="app-name-sub">${app.name.ko}</div>
-          ${descHtml}
-          <div class="badges">
-            ${storeBadge(app.playstore, 'Google Play', PLAY_SVG)}
-            ${storeBadge(app.appstore, 'App Store', APPLE_SVG)}
-            ${storeBadge(app.macstore, 'Mac App Store', APPLE_SVG)}
-          </div>
-        </div>
-      `;
-    }
-
-    function iconFallback(img, letter, color) {
-      const div = img.parentElement;
-      div.innerHTML = `<span class="letter-icon" style="background:${color}18;color:${color}">${letter}</span>`;
-    }
-
-    const APPS = [{"key":"flychick","name":{"ko":"날아라병아리","en":"Flychick"},"desc":"날아다니는 병아리를 조종하는 캐주얼 아케이드 게임.","icon":"assets/icon-flychick.png","appstore":"없음","playstore":"https://play.google.com/store/apps/details?id=com.woojobs.flychick","type":"게임"},{"key":"todaycalendar","name":{"ko":"오늘 달력","en":"Today Calendar"},"desc":"나만의 기념일·공휴일·알림을 서버 없이 관리하는 달력 앱.","icon":"assets/icon-todaycalendar.png","appstore":"https://apps.apple.com/kr/app/%EC%98%A4%EB%8A%98%EB%8B%AC%EB%A0%A5/id6760771539","playstore":"https://play.google.com/store/apps/details?id=com.woojobs.todaycalendar","type":"유틸리티"},{"key":"targetprime","name":{"ko":"타겟:프라임","en":"Target:Prime"},"desc":"스테이지를 클리어하고 아이템과 별을 수집하는 퍼즐 게임.","icon":"assets/icon-targetprime.png","appstore":"https://apps.apple.com/kr/app/%ED%83%80%EA%B2%9F-%ED%94%84%EB%9D%BC%EC%9E%84-target-prime/id6761228388","playstore":"https://play.google.com/store/apps/details?id=com.woojobs.makingNumber","type":"게임"},{"key":"versicolor","name":{"ko":"다채화","en":"Versicolor"},"desc":"레벨과 라운드를 클리어하며 즐기는 캐주얼 퍼즐 게임.","icon":"assets/icon-versicolor.png","appstore":"https://apps.apple.com/kr/app/%EB%8B%A4%EC%B1%84%ED%99%94-%EB%B2%84%EC%8B%9C%EC%BB%AC%EB%9F%AC/id6761609235","playstore":"https://play.google.com/store/apps/details?id=com.woojobs.versicolor","type":"게임"},{"key":"kbaseball","name":{"ko":"야구정보","en":"K-Baseball"},"desc":"","icon":"assets/icon-kbaseball.png","appstore":"없음","playstore":"없음","type":"유틸리티"},{"key":"superdownloader","name":{"ko":"수퍼다운로더","en":"SuperDownloader"},"desc":"","icon":"assets/icon-superdownloader.png","appstore":"없음","playstore":"없음","type":"유틸리티"},{"key":"myself","name":{"ko":"나에게 쓰는 편지","en":"Myself"},"desc":"서버 없이 내 기기끼리만 동기화하는 P2P 개인 메시지 앱.","icon":"assets/icon-myself.png","appstore":"준비중","macstore":"준비중","playstore":"https://play.google.com/store/apps/details?id=com.woojobs.myself","type":"유틸리티"},{"key":"themoment","name":{"ko":"The Moment","en":"The Moment"},"desc":"","icon":"assets/icon-themoment.png","appstore":"준비중","playstore":"준비중","type":"게임"}];
-
-    document.getElementById('apps-grid').innerHTML = APPS.map(cardHtml).join('');
-  </script>
 
 </body>
 </html>
