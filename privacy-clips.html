@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clips — 개인정보처리방침 / Privacy Policy</title>
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --surface: #1a1a22;
+      --border: rgba(255,255,255,0.07);
+      --accent: #818cf8;
+      --text: #e4e4f0;
+      --muted: rgba(200,200,220,0.45);
+      --radius: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, 'SF Pro Text', BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #818cf8, #6366f1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 4px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active,
+    .lang-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+
+    .updated {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+
+    .card h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p {
+      color: rgba(200,200,220,0.75);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .card ul li {
+      color: rgba(200,200,220,0.75);
+      font-size: 14px;
+      padding: 3px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .card ul li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .highlight {
+      background: rgba(129,140,248,0.08);
+      border: 1px solid rgba(129,140,248,0.2);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: rgba(200,200,220,0.8);
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(129,140,248,0.06));
+      border: 1px solid rgba(129,140,248,0.25);
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .contact-card h2 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .contact-card a {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 24px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .contact-card a:hover { opacity: 0.85; }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* 언어 전환 */
+    [lang="en"] { display: none; }
+    body.en [lang="ko"] { display: none; }
+    body.en [lang="en"] { display: block; }
+    body.en .contact-card[lang="en"] { display: block; }
+    body.en .contact-card[lang="ko"] { display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">✂️</div>
+    Clips
+  </div>
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('ko')">한국어</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- 한국어 -->
+  <div lang="ko">
+    <p class="section-title">개인정보처리방침</p>
+    <p class="updated">최종 업데이트: 2026년 5월 19일</p>
+
+    <div class="card">
+      <h2>📋 개요</h2>
+      <p>Clips(이하 "앱")는 메뉴바에서 동작하는 클립보드 및 스크린샷 히스토리 앱입니다. 본 방침은 앱이 처리하는 데이터의 범위와 방식을 설명합니다.</p>
+    </div>
+
+    <div class="card">
+      <h2>💾 수집 및 저장하는 정보</h2>
+      <p>앱은 아래 데이터를 <strong>기기 내부(로컬)에만</strong> 저장합니다.</p>
+      <ul>
+        <li>클립보드에 복사된 텍스트</li>
+        <li>사용자가 직접 캡처한 스크린샷 이미지</li>
+        <li>캡처 이미지에서 추출된 OCR 텍스트</li>
+        <li>리딤 코드 등록 여부 (프로 버전 활성화 상태)</li>
+      </ul>
+      <div class="highlight">
+        모든 데이터는 macOS의 앱 전용 저장소(<code>userData</code>)에 보관되며, 외부 서버로 전송되지 않습니다.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🚫 수집하지 않는 정보</h2>
+      <ul>
+        <li>이름, 이메일, 전화번호 등 개인 식별 정보</li>
+        <li>위치 정보</li>
+        <li>기기 고유 식별자</li>
+        <li>사용 통계 또는 분석 데이터</li>
+        <li>광고 식별자</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🌐 네트워크 사용</h2>
+      <p>앱은 리딤 코드 검증 시에만 외부 네트워크에 접근합니다. 이 요청에는 입력한 코드 값 외의 개인 정보가 포함되지 않습니다. 그 외 모든 기능은 오프라인으로 동작합니다.</p>
+    </div>
+
+    <div class="card">
+      <h2>🔒 데이터 보안 및 접근</h2>
+      <p>저장된 데이터는 오직 사용자 본인의 기기에서만 접근 가능합니다. 개발자는 어떠한 방법으로도 사용자 데이터에 접근할 수 없습니다.</p>
+    </div>
+
+    <div class="card">
+      <h2>👶 아동 보호</h2>
+      <p>본 앱은 만 14세 미만 아동을 대상으로 하지 않으며, 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
+    </div>
+
+    <div class="card">
+      <h2>📝 방침 변경</h2>
+      <p>본 개인정보처리방침은 변경될 수 있습니다. 중요한 변경이 있을 경우 앱 업데이트 노트 또는 본 페이지를 통해 사전에 안내드립니다.</p>
+    </div>
+
+    <div class="contact-card" lang="ko">
+      <h2>문의하기</h2>
+      <p>개인정보 관련 문의 사항이 있으시면 아래 이메일로 연락해 주세요.</p>
+      <a href="mailto:nexus11.second@gmail.com">✉️ nexus11.second@gmail.com</a>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div lang="en">
+    <p class="section-title">Privacy Policy</p>
+    <p class="updated">Last updated: May 19, 2026</p>
+
+    <div class="card">
+      <h2>📋 Overview</h2>
+      <p>Clips (the "App") is a menu bar app for managing clipboard and screenshot history. This policy explains what data the App handles and how.</p>
+    </div>
+
+    <div class="card">
+      <h2>💾 Information We Store</h2>
+      <p>The App stores the following data <strong>locally on your device only</strong>.</p>
+      <ul>
+        <li>Text copied to the clipboard</li>
+        <li>Screenshots captured by the user</li>
+        <li>OCR-extracted text from captured images</li>
+        <li>Redeem code activation status (Pro version)</li>
+      </ul>
+      <div class="highlight">
+        All data is stored in the app's private macOS storage (<code>userData</code>) and is never transmitted to external servers.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🚫 Information We Do NOT Collect</h2>
+      <ul>
+        <li>Personal identifiers (name, email, phone number, etc.)</li>
+        <li>Location data</li>
+        <li>Device identifiers</li>
+        <li>Usage analytics or telemetry</li>
+        <li>Advertising identifiers</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🌐 Network Access</h2>
+      <p>The App accesses the network only to validate redeem codes. This request contains only the entered code — no personal information is included. All other features work entirely offline.</p>
+    </div>
+
+    <div class="card">
+      <h2>🔒 Data Security & Access</h2>
+      <p>Stored data is accessible only on your own device. The developer has no ability to access your data by any means.</p>
+    </div>
+
+    <div class="card">
+      <h2>👶 Children's Privacy</h2>
+      <p>This App is not directed at children under the age of 13, and we do not knowingly collect personal information from children.</p>
+    </div>
+
+    <div class="card">
+      <h2>📝 Changes to This Policy</h2>
+      <p>This Privacy Policy may be updated from time to time. If significant changes are made, we will notify you through app update notes or this page in advance.</p>
+    </div>
+
+    <div class="contact-card" lang="en">
+      <h2>Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy, please reach out via email.</p>
+      <a href="mailto:nexus11.second@gmail.com">✉️ nexus11.second@gmail.com</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 woojobs · Clips · <a href="mailto:nexus11.second@gmail.com" style="color: inherit;">nexus11.second@gmail.com</a>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = lang === 'en' ? 'en' : '';
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim() === (lang === 'ko' ? '한국어' : 'English'));
+    });
+  }
+
+  // 브라우저 언어 자동 감지
+  const browserLang = navigator.language || navigator.userLanguage;
+  if (!browserLang.startsWith('ko')) setLang('en');
+</script>
+
+</body>
+</html>
