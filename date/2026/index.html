@@ -170,11 +170,11 @@
       </a>
       <a href="06/" class="month-item has-apps">
         <div class="mi-name">Jun</div>
-        <div class="mi-count">준비중</div>
+        <div class="mi-count">앱 2개</div>
       </a>
       <a href="07/" class="month-item has-apps">
         <div class="mi-name">Jul</div>
-        <div class="mi-count">준비중</div>
+        <div class="mi-count">앱 1개</div>
       </a>
       <a href="08/" class="month-item">
         <div class="mi-name">Aug</div>
@@ -216,7 +216,7 @@
     const COLORS = {
       flychick:'#fbbf24',todaycalendar:'#3b82f6',targetprime:'#f59e0b',
       versicolor:'#39ff14',kbaseball:'#ef4444',superdownloader:'#a855f7',
-      myself:'#818cf8',themoment:'#14b8a6',
+      myself:'#818cf8',themoment:'#14b8a6',fifty:'#06b6d4',
     };
     const PLAY=`<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.35.2.76.22 1.12.07l11.4-6.58-2.5-2.5-10.02 9.01zm-1.5-20.3C1.26 3.9 1 4.46 1 5.16v13.68c0 .7.26 1.26.68 1.7l.09.08 7.66-7.66v-.18L1.68 5.46zm16.64 9.06l-2.58-2.58-2.58 2.58 2.58 2.58 2.58-2.58zm-2.58-10.04L4.3.24C3.94.09 3.53.11 3.18.31L13.2 10.33l2.54-2.55 2.54 2.55-.01.01 1.5-.87c.77-.45.78-1.56.01-2.01z"/></svg>`;
     const APPLE=`<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>`;
@@ -253,8 +253,9 @@
       {key:"superdownloader",name:{ko:"수퍼다운로더",en:"SuperDownloader"},desc:"동영상·파일을 빠르게 내 기기에 저장하는 다운로드 매니저.",icon:"assets/icon-superdownloader.png",appstore:"없음",playstore:"없음",type:"유틸리티"},
       {key:"targetprime",name:{ko:"타겟:프라임",en:"Target:Prime"},desc:"스테이지를 클리어하고 아이템과 별을 수집하는 퍼즐 게임.",icon:"assets/icon-targetprime.png",appstore:"https://apps.apple.com/kr/app/%ED%83%80%EA%B2%9F-%ED%94%84%EB%9D%BC%EC%9E%84-target-prime/id6761228388",playstore:"https://play.google.com/store/apps/details?id=com.woojobs.makingNumber",type:"게임"},
       {key:"versicolor",name:{ko:"다채화",en:"Versicolor"},desc:"레벨과 라운드를 클리어하며 즐기는 캐주얼 퍼즐 게임.",icon:"assets/icon-versicolor.png",appstore:"https://apps.apple.com/kr/app/%EB%8B%A4%EC%B1%84%ED%99%94-%EB%B2%84%EC%8B%9C%EC%BB%AC%EB%9F%AC/id6761609235",playstore:"https://play.google.com/store/apps/details?id=com.woojobs.versicolor",type:"게임"},
-      {key:"themoment",name:{ko:"The Moment",en:"The Moment"},desc:"",icon:"assets/icon-themoment.png",appstore:"https://apps.apple.com/kr/app/themoment-%EC%B0%B0%EB%82%98%EC%9D%98-%EC%88%9C%EA%B0%84/id6766211390",playstore:"https://play.google.com/store/apps/details?id=com.woojobs.themoment",type:"게임"},
-      {key:"myself",name:{ko:"나에게 쓰는 편지",en:"Myself"},desc:"서버 없이 내 기기끼리만 동기화하는 P2P 개인 메시지 앱.",icon:"assets/icon-myself.png",appstore:"https://apps.apple.com/kr/app/myself-%EB%82%98%EC%97%90%EA%B2%8C-%EC%93%B0%EB%8A%94-%ED%8E%B8%EC%A7%80/id6761908837",macstore:"https://apps.apple.com/kr/app/myself-just-for-me/id6761960148?mt=12",playstore:"https://play.google.com/store/apps/details?id=com.woojobs.myself",type:"유틸리티"}
+      {key:"themoment",name:{ko:"The Moment",en:"The Moment"},desc:"움직이는 실루엣을 타겟에 딱! 맞추는 짜릿한 손맛.",icon:"assets/icon-themoment.png",appstore:"https://apps.apple.com/kr/app/themoment-%EC%B0%B0%EB%82%98%EC%9D%98-%EC%88%9C%EA%B0%84/id6766211390",playstore:"https://play.google.com/store/apps/details?id=com.woojobs.themoment",type:"게임"},
+      {key:"myself",name:{ko:"나에게 쓰는 편지",en:"Myself"},desc:"서버 없이 내 기기끼리만 동기화하는 P2P 개인 메시지 앱.",icon:"assets/icon-myself.png",appstore:"https://apps.apple.com/kr/app/myself-%EB%82%98%EC%97%90%EA%B2%8C-%EC%93%B0%EB%8A%94-%ED%8E%B8%EC%A7%80/id6761908837",macstore:"https://apps.apple.com/kr/app/myself-just-for-me/id6761960148?mt=12",playstore:"https://play.google.com/store/apps/details?id=com.woojobs.myself",type:"유틸리티"},
+      {key:"fifty",name:{ko:"퍼펙트 피프티",en:"Perfect Fifty"},desc:"투명 PNG 이미지를 완벽한 50:50 비율로 나누는 정밀도 측정 게임입니다.",icon:"assets/icon-fifty.png",appstore:"준비중",playstore:"준비중",type:"게임"}
     ];
     document.getElementById('apps-grid').innerHTML = APPS.map(card).join('');
   </script>
