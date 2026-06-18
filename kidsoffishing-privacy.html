@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>낚시의아이 — 개인정보처리방침</title>
+  <style>
+    :root {
+      --blue:   #007AFF;
+      --green:  #34C759;
+      --teal:   #30B0C7;
+      --bg:     #F2F2F7;
+      --card:   #FFFFFF;
+      --border: #E5E5EA;
+      --text:   #1C1C1E;
+      --sub:    #6D6D72;
+      --light:  #F9F9FB;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg); color: var(--text); min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1C3A5E 0%, #0A6E8A 100%);
+      color: #fff; padding: 44px 32px 36px; text-align: center;
+    }
+    header .icon { font-size: 60px; display: block; margin-bottom: 14px; }
+    header h1   { font-size: 28px; font-weight: 800; letter-spacing: -.5px; }
+    header p    { font-size: 14px; opacity: .8; margin-top: 6px; }
+    header .meta {
+      display: inline-flex; gap: 14px; margin-top: 18px;
+      background: rgba(255,255,255,.13); border-radius: 20px; padding: 7px 18px;
+      font-size: 12px; font-weight: 600;
+    }
+
+    /* ── Tabs ── */
+    .tab-wrap {
+      display: flex; overflow-x: auto;
+      background: var(--card); border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .tab-wrap::-webkit-scrollbar { display: none; }
+    .tab {
+      flex: 1; min-width: 76px; padding: 13px 6px;
+      text-align: center; font-size: 12px; font-weight: 600;
+      cursor: pointer; border: none; background: none; color: var(--sub);
+      border-bottom: 3px solid transparent; transition: all .2s; white-space: nowrap;
+    }
+    .tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .tab .flag  { font-size: 20px; display: block; margin-bottom: 3px; }
+
+    /* ── Panel ── */
+    .lang-panel { display: none; padding: 28px 20px 48px; max-width: 800px; margin: 0 auto; }
+    .lang-panel.active { display: block; }
+
+    /* ── Document ── */
+    .doc-title {
+      font-size: 22px; font-weight: 800; margin-bottom: 4px; color: var(--text);
+    }
+    .doc-meta {
+      font-size: 12px; color: var(--sub); margin-bottom: 28px;
+    }
+
+    /* ── Section ── */
+    .sec { margin-bottom: 28px; }
+    .sec-title {
+      font-size: 16px; font-weight: 700; margin-bottom: 12px;
+      color: var(--blue); display: flex; align-items: center; gap: 8px;
+    }
+    .sec-title .num {
+      background: var(--blue); color: #fff;
+      font-size: 11px; font-weight: 800;
+      border-radius: 50%; width: 22px; height: 22px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .sec-body {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .sec-body p, .sec-body li {
+      font-size: 14px; line-height: 1.75; color: #2c2c2e; padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sec-body p:last-child, .sec-body li:last-child { border-bottom: none; }
+    .sec-body ul { list-style: none; }
+    .sec-body li::before { content: "•  "; color: var(--blue); font-weight: 700; }
+
+    /* ── Table ── */
+    .data-table {
+      width: 100%; border-collapse: collapse;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden; margin-bottom: 28px;
+    }
+    .data-table th {
+      background: #EEF3FF; font-size: 12px; font-weight: 700;
+      color: var(--blue); text-align: left; padding: 11px 14px;
+      border-bottom: 1px solid var(--border); letter-spacing: .3px;
+    }
+    .data-table td {
+      font-size: 13px; padding: 11px 14px; color: var(--text);
+      border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: var(--light); }
+    .badge {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      border-radius: 10px; padding: 2px 7px; margin-left: 4px;
+    }
+    .badge-local { background: #E8F8EE; color: #1a7a3a; }
+    .badge-server { background: #FFF3E0; color: #8a5000; }
+    .badge-third  { background: #F0EEFF; color: #5500cc; }
+    .badge-no     { background: #FFE5E5; color: #cc0000; }
+
+    /* ── Contact ── */
+    .contact-card {
+      background: linear-gradient(135deg, #EEF3FF 0%, #F0F8FF 100%);
+      border: 1px solid #C8D8FF; border-radius: 14px;
+      padding: 20px 22px; display: flex; align-items: center; gap: 16px;
+    }
+    .contact-icon { font-size: 36px; }
+    .contact-info h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .contact-info a  { color: var(--blue); text-decoration: none; font-size: 14px; font-weight: 600; }
+
+    /* ── Highlight box ── */
+    .highlight {
+      background: #FFFBEE; border: 1px solid #FFD60A55;
+      border-left: 4px solid #FFD60A; border-radius: 10px;
+      padding: 14px 16px; margin-bottom: 18px;
+      font-size: 13px; line-height: 1.7; color: #5a4800;
+    }
+
+    footer {
+      text-align: center; padding: 28px 20px;
+      font-size: 12px; color: var(--sub); border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="icon">🔒</span>
+  <h1>개인정보처리방침 / Privacy Policy</h1>
+  <p>낚시의아이 (kids of fishing)</p>
+  <div class="meta">
+    <span>v1.4.1</span>
+    <span>·</span>
+    <span>시행일: 2026-06-17</span>
+    <span>·</span>
+    <span>nexus11.second@gmail.com</span>
+  </div>
+</header>
+
+<!-- Tabs -->
+<div class="tab-wrap">
+  <button class="tab active" onclick="showLang('ko', this)"><span class="flag">🇰🇷</span>한국어</button>
+  <button class="tab" onclick="showLang('en', this)"><span class="flag">🇺🇸</span>English</button>
+  <button class="tab" onclick="showLang('ja', this)"><span class="flag">🇯🇵</span>日本語</button>
+  <button class="tab" onclick="showLang('es', this)"><span class="flag">🇪🇸</span>Español</button>
+  <button class="tab" onclick="showLang('zh', this)"><span class="flag">🇨🇳</span>中文</button>
+</div>
+
+
+<!-- ══════════════════════════════════
+     KO
+══════════════════════════════════ -->
+<div id="panel-ko" class="lang-panel active">
+  <div class="doc-title">개인정보처리방침</div>
+  <div class="doc-meta">시행일: 2026년 6월 17일 &nbsp;|&nbsp; 앱: 낚시의아이 (kids of fishing) &nbsp;|&nbsp; 개발자: nexus11</div>
+
+  <div class="highlight">
+    낚시의아이는 이용자의 개인정보를 소중히 여깁니다. 이 방침은 앱이 어떤 정보를 수집하고, 어떻게 사용하며, 어떻게 보호하는지 설명합니다. 읽기 싫더라도 한 번은 읽어두시길 권장합니다.
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">1</span>수집하는 정보</div>
+    <table class="data-table">
+      <tr><th>정보 항목</th><th>수집 경로</th><th>저장 위치</th><th>필수 여부</th></tr>
+      <tr><td>이메일 주소 (SHA-256 해시)</td><td>회원 가입 시 직접 입력</td><td>서버 <span class="badge badge-server">서버</span></td><td>선택 (게스트는 불필요)</td></tr>
+      <tr><td>비밀번호 (SHA-256 해시)</td><td>회원 가입 / 로그인</td><td>서버 <span class="badge badge-server">서버</span></td><td>선택 (회원만)</td></tr>
+      <tr><td>게임 진행 데이터 (레벨, XP, 은화)</td><td>게임 플레이</td><td>기기 + 서버 <span class="badge badge-local">로컬</span><span class="badge badge-server">서버</span></td><td>필수</td></tr>
+      <tr><td>인벤토리 (낚싯대·찌·아이템)</td><td>게임 내 구매 / 획득</td><td>기기 + 서버 <span class="badge badge-local">로컬</span><span class="badge badge-server">서버</span></td><td>필수</td></tr>
+      <tr><td>포획 기록 (물고기 종류·무게·시간)</td><td>게임 플레이</td><td>기기 <span class="badge badge-local">로컬</span></td><td>필수</td></tr>
+      <tr><td>도감 기록 (잡은 물고기 종 목록)</td><td>게임 플레이</td><td>기기 <span class="badge badge-local">로컬</span></td><td>필수</td></tr>
+      <tr><td>앱 설정 (언어, 사운드, 선택 장비)</td><td>사용자 설정</td><td>기기 <span class="badge badge-local">로컬</span></td><td>필수</td></tr>
+      <tr><td>기기 언어 정보</td><td>시스템 자동 감지</td><td>기기 <span class="badge badge-local">로컬</span></td><td>필수</td></tr>
+    </table>
+    <div class="sec-body">
+      <p>⛔ 수집하지 않는 정보: 위치정보, 연락처, 카메라/마이크, 광고식별자(IDFA), 생체정보</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">2</span>정보 이용 목적</div>
+    <div class="sec-body">
+      <ul>
+        <li>게임 서비스 제공 및 계정 관리 (로그인·데이터 동기화)</li>
+        <li>게임 진행 저장 및 기기 변경 시 데이터 복원</li>
+        <li>인앱 결제 처리 및 아이템 지급</li>
+        <li>이벤트·업데이트 등 서비스 운영</li>
+        <li>문의 대응 및 오류 확인</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">3</span>제3자 서비스</div>
+    <table class="data-table">
+      <tr><th>서비스</th><th>용도</th><th>전송 데이터</th><th>개인정보처리방침</th></tr>
+      <tr><td>Apple App Store</td><td>인앱 결제 처리</td><td>Apple이 직접 처리 (앱은 결제 정보 미수신)</td><td>apple.com/legal/privacy</td></tr>
+      <tr><td>open.er-api.com</td><td>실시간 환율 조회</td><td>없음 (단순 GET 요청)</td><td>exchangerate-api.com</td></tr>
+      <tr><td>cdn.nexus11standalone.com</td><td>게임 에셋 (이미지·영상·데이터) 전달</td><td>없음 (에셋 다운로드만)</td><td>자체 운영</td></tr>
+    </table>
+    <div class="sec-body">
+      <p>앱은 Google Analytics, Facebook SDK 등 별도의 광고·분석 SDK를 포함하지 않습니다.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">4</span>데이터 보안</div>
+    <div class="sec-body">
+      <ul>
+        <li>이메일 주소와 비밀번호는 기기 내에서 SHA-256으로 해시 처리 후 서버에 전송되며, 원문은 어디에도 저장되지 않습니다.</li>
+        <li>서버 통신은 HTTPS(TLS)로 암호화됩니다.</li>
+        <li>로컬 데이터(SQLite, 파일 캐시)는 iOS 샌드박스 내에 격리 저장됩니다.</li>
+        <li>도감 기록 파일은 iCloud 백업 제외 경로에 저장되어 불필요한 클라우드 동기화를 방지합니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">5</span>데이터 보관 및 삭제</div>
+    <div class="sec-body">
+      <ul>
+        <li>로컬 데이터: 앱 삭제 시 기기에서 자동 삭제됩니다.</li>
+        <li>서버 데이터: 회원 탈퇴 요청 시 30일 이내 삭제합니다.</li>
+        <li>게스트 계정: 별도 삭제 요청이 없는 경우 마지막 활동 후 1년간 보관 후 삭제합니다.</li>
+        <li>앱 내 설정 화면에서 로컬 캐시 및 게임 데이터를 직접 초기화할 수 있습니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">6</span>아동 개인정보 보호</div>
+    <div class="sec-body">
+      <p>낚시의아이는 만 14세 미만 아동으로부터 의도적으로 개인정보를 수집하지 않습니다. 14세 미만 이용자는 법정대리인의 동의하에 사용하여야 합니다. 아동의 개인정보가 수집된 사실을 인지한 경우 즉시 삭제 조치합니다.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">7</span>이용자 권리</div>
+    <div class="sec-body">
+      <ul>
+        <li>개인정보 열람, 수정, 삭제를 요청할 수 있습니다.</li>
+        <li>언제든지 회원 탈퇴 및 데이터 삭제를 요청할 수 있습니다.</li>
+        <li>게스트 계정은 회원 전환 없이 앱을 이용할 수 있습니다.</li>
+        <li>모든 요청은 아래 이메일로 접수합니다.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">8</span>방침 변경 안내</div>
+    <div class="sec-body">
+      <p>본 방침이 변경될 경우 앱 내 공지 또는 이메일로 사전 안내합니다. 중요한 변경사항은 최소 7일 전에 고지하며, 변경 후 계속 이용 시 변경 내용에 동의한 것으로 간주합니다.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">9</span>문의</div>
+    <div class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-info">
+        <h3>개인정보 보호 담당 (nexus11)</h3>
+        <a href="mailto:nexus11.second@gmail.com">nexus11.second@gmail.com</a>
+        <p style="font-size:12px;color:var(--sub);margin-top:4px;">문의 접수 후 영업일 기준 3일 이내 답변드립니다.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     EN
+══════════════════════════════════ -->
+<div id="panel-en" class="lang-panel">
+  <div class="doc-title">Privacy Policy</div>
+  <div class="doc-meta">Effective: June 17, 2026 &nbsp;|&nbsp; App: kids of fishing &nbsp;|&nbsp; Developer: nexus11</div>
+
+  <div class="highlight">
+    We take your privacy seriously — almost as seriously as catching a rare fish. This policy explains exactly what data kids of fishing collects, how it is used, and how it is protected.
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">1</span>Information We Collect</div>
+    <table class="data-table">
+      <tr><th>Data Item</th><th>Source</th><th>Storage</th><th>Required</th></tr>
+      <tr><td>Email address (SHA-256 hash only)</td><td>Entered during member registration</td><td>Server <span class="badge badge-server">Server</span></td><td>Optional (guests exempt)</td></tr>
+      <tr><td>Password (SHA-256 hash only)</td><td>Registration / Login</td><td>Server <span class="badge badge-server">Server</span></td><td>Optional (members only)</td></tr>
+      <tr><td>Game progress (level, XP, silver)</td><td>Gameplay</td><td>Device + Server <span class="badge badge-local">Local</span><span class="badge badge-server">Server</span></td><td>Required</td></tr>
+      <tr><td>Inventory (rods, floats, items)</td><td>In-game purchases / rewards</td><td>Device + Server <span class="badge badge-local">Local</span><span class="badge badge-server">Server</span></td><td>Required</td></tr>
+      <tr><td>Catch records (species, weight, time)</td><td>Gameplay</td><td>Device only <span class="badge badge-local">Local</span></td><td>Required</td></tr>
+      <tr><td>Fish encyclopedia records</td><td>Gameplay</td><td>Device only <span class="badge badge-local">Local</span></td><td>Required</td></tr>
+      <tr><td>App settings (language, sound, gear)</td><td>User configuration</td><td>Device only <span class="badge badge-local">Local</span></td><td>Required</td></tr>
+      <tr><td>Device language</td><td>System auto-detection</td><td>Device only <span class="badge badge-local">Local</span></td><td>Required</td></tr>
+    </table>
+    <div class="sec-body">
+      <p>⛔ We do NOT collect: location, contacts, camera/microphone access, advertising identifiers (IDFA), or biometric data.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">2</span>How We Use Your Information</div>
+    <div class="sec-body">
+      <ul>
+        <li>To provide and operate the game service and manage your account</li>
+        <li>To save game progress and restore data when switching devices</li>
+        <li>To process in-app purchases and deliver purchased items</li>
+        <li>To operate events and deliver game updates</li>
+        <li>To respond to support requests and investigate errors</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">3</span>Third-Party Services</div>
+    <table class="data-table">
+      <tr><th>Service</th><th>Purpose</th><th>Data Transmitted</th><th>Privacy Policy</th></tr>
+      <tr><td>Apple App Store</td><td>In-app purchase processing</td><td>Handled by Apple directly — we never receive payment details</td><td>apple.com/legal/privacy</td></tr>
+      <tr><td>open.er-api.com</td><td>Live exchange rate lookup</td><td>None — anonymous GET request only</td><td>exchangerate-api.com</td></tr>
+      <tr><td>cdn.nexus11standalone.com</td><td>Game assets (images, video, data)</td><td>None — asset download only</td><td>Self-operated</td></tr>
+    </table>
+    <div class="sec-body">
+      <p>kids of fishing does not include any advertising SDKs (Google Ads, Meta/Facebook, etc.) or third-party analytics frameworks.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">4</span>Data Security</div>
+    <div class="sec-body">
+      <ul>
+        <li>Email addresses and passwords are hashed with SHA-256 on your device before transmission. Neither plaintext value is ever stored anywhere.</li>
+        <li>All server communication is encrypted via HTTPS (TLS).</li>
+        <li>Local data (SQLite database, file cache) is isolated within the iOS app sandbox.</li>
+        <li>Encyclopedia records are stored outside iCloud backup paths to prevent unnecessary cloud synchronization.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">5</span>Data Retention & Deletion</div>
+    <div class="sec-body">
+      <ul>
+        <li>Local data is automatically deleted when you uninstall the app.</li>
+        <li>Server data is deleted within 30 days of an account deletion request.</li>
+        <li>Guest accounts inactive for more than 1 year are automatically deleted.</li>
+        <li>You can reset local cache and game data at any time from the in-app Settings screen.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">6</span>Children's Privacy</div>
+    <div class="sec-body">
+      <p>kids of fishing does not knowingly collect personal information from children under 13 (or 14 in certain jurisdictions). If we become aware that a child's data has been collected without proper consent, we will delete it promptly. Parents or guardians who believe their child's data has been collected should contact us immediately.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">7</span>Your Rights</div>
+    <div class="sec-body">
+      <ul>
+        <li>You may request access to, correction of, or deletion of your personal data at any time.</li>
+        <li>You may delete your account and all associated data by contacting us.</li>
+        <li>You may use the app as a guest without providing any personal information.</li>
+        <li>All requests are handled via the contact email below.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">8</span>Policy Changes</div>
+    <div class="sec-body">
+      <p>If this policy is updated, we will notify you through an in-app notice or email. Material changes will be communicated at least 7 days before taking effect. Continued use of the app after changes constitutes acceptance of the revised policy.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">9</span>Contact Us</div>
+    <div class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-info">
+        <h3>Privacy Contact — nexus11</h3>
+        <a href="mailto:nexus11.second@gmail.com">nexus11.second@gmail.com</a>
+        <p style="font-size:12px;color:var(--sub);margin-top:4px;">We aim to respond within 3 business days.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     JA
+══════════════════════════════════ -->
+<div id="panel-ja" class="lang-panel">
+  <div class="doc-title">プライバシーポリシー</div>
+  <div class="doc-meta">施行日: 2026年6月17日 &nbsp;|&nbsp; アプリ: 釣り王 (kids of fishing) &nbsp;|&nbsp; 開発者: nexus11</div>
+
+  <div class="highlight">
+    釣り王は、ユーザーの個人情報を大切に扱います。このポリシーは、アプリが収集する情報、その利用目的、および保護方法について説明しています。
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">1</span>収集する情報</div>
+    <table class="data-table">
+      <tr><th>情報項目</th><th>収集経路</th><th>保存場所</th><th>必須/任意</th></tr>
+      <tr><td>メールアドレス（SHA-256ハッシュのみ）</td><td>会員登録時に入力</td><td>サーバー <span class="badge badge-server">サーバー</span></td><td>任意（ゲストは不要）</td></tr>
+      <tr><td>パスワード（SHA-256ハッシュのみ）</td><td>登録・ログイン</td><td>サーバー <span class="badge badge-server">サーバー</span></td><td>任意（会員のみ）</td></tr>
+      <tr><td>ゲーム進行データ（レベル・XP・銀貨）</td><td>ゲームプレイ</td><td>端末＋サーバー <span class="badge badge-local">ローカル</span><span class="badge badge-server">サーバー</span></td><td>必須</td></tr>
+      <tr><td>インベントリ（ロッド・ウキ・アイテム）</td><td>ゲーム内購入・獲得</td><td>端末＋サーバー <span class="badge badge-local">ローカル</span><span class="badge badge-server">サーバー</span></td><td>必須</td></tr>
+      <tr><td>釣り記録（魚種・重量・時刻）</td><td>ゲームプレイ</td><td>端末のみ <span class="badge badge-local">ローカル</span></td><td>必須</td></tr>
+      <tr><td>図鑑記録（釣った魚の一覧）</td><td>ゲームプレイ</td><td>端末のみ <span class="badge badge-local">ローカル</span></td><td>必須</td></tr>
+      <tr><td>アプリ設定（言語・サウンド・装備）</td><td>ユーザー設定</td><td>端末のみ <span class="badge badge-local">ローカル</span></td><td>必須</td></tr>
+      <tr><td>端末言語情報</td><td>システム自動検出</td><td>端末のみ <span class="badge badge-local">ローカル</span></td><td>必須</td></tr>
+    </table>
+    <div class="sec-body">
+      <p>⛔ 収集しない情報: 位置情報、連絡先、カメラ・マイク、広告識別子（IDFA）、生体情報</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">2</span>情報の利用目的</div>
+    <div class="sec-body">
+      <ul>
+        <li>ゲームサービスの提供およびアカウント管理（ログイン・データ同期）</li>
+        <li>ゲームの進行データの保存および端末変更時のデータ復元</li>
+        <li>アプリ内購入の処理およびアイテムの付与</li>
+        <li>イベント・アップデートなどサービス運営</li>
+        <li>お問い合わせ対応およびエラーの確認</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">3</span>第三者サービス</div>
+    <table class="data-table">
+      <tr><th>サービス</th><th>用途</th><th>送信データ</th><th>プライバシーポリシー</th></tr>
+      <tr><td>Apple App Store</td><td>アプリ内課金処理</td><td>Appleが直接処理（アプリは決済情報を受け取りません）</td><td>apple.com/legal/privacy</td></tr>
+      <tr><td>open.er-api.com</td><td>リアルタイム為替レート取得</td><td>なし（匿名GETリクエストのみ）</td><td>exchangerate-api.com</td></tr>
+      <tr><td>cdn.nexus11standalone.com</td><td>ゲームアセット配信（画像・動画・データ）</td><td>なし（アセットダウンロードのみ）</td><td>自社運営</td></tr>
+    </table>
+    <div class="sec-body">
+      <p>釣り王には広告SDK（Google広告、Metaなど）やサードパーティの分析フレームワークは含まれていません。</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">4</span>データセキュリティ</div>
+    <div class="sec-body">
+      <ul>
+        <li>メールアドレスとパスワードはお使いの端末上でSHA-256によりハッシュ化してからサーバーに送信されます。どちらの平文もどこにも保存されません。</li>
+        <li>サーバー通信はすべてHTTPS（TLS）で暗号化されています。</li>
+        <li>ローカルデータ（SQLiteデータベース・ファイルキャッシュ）はiOSのアプリサンドボックス内に隔離して保存されます。</li>
+        <li>図鑑記録はiCloudバックアップの対象外パスに保存され、不必要なクラウド同期を防止しています。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">5</span>データ保管と削除</div>
+    <div class="sec-body">
+      <ul>
+        <li>ローカルデータ: アプリのアンインストール時に端末から自動削除されます。</li>
+        <li>サーバーデータ: アカウント削除のご要望から30日以内に削除します。</li>
+        <li>ゲストアカウント: 最終利用から1年間保管後、自動削除します。</li>
+        <li>アプリ内の設定画面から、ローカルキャッシュおよびゲームデータをいつでも初期化できます。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">6</span>子どものプライバシー</div>
+    <div class="sec-body">
+      <p>釣り王は13歳未満（一部の地域では14歳未満）の子どもから意図的に個人情報を収集しません。子どもの個人情報が収集されたことが判明した場合は、速やかに削除いたします。保護者の方は下記の連絡先までご連絡ください。</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">7</span>ユーザーの権利</div>
+    <div class="sec-body">
+      <ul>
+        <li>個人情報の閲覧・修正・削除をいつでも請求できます。</li>
+        <li>アカウントの削除およびデータの消去を要請できます。</li>
+        <li>ゲストとして、個人情報を提供せずにアプリを利用できます。</li>
+        <li>すべてのご要望は下記のメールアドレスにて受け付けています。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">8</span>ポリシーの変更</div>
+    <div class="sec-body">
+      <p>本ポリシーを改定する場合は、アプリ内の通知またはメールにより事前にお知らせします。重要な変更については、施行の少なくとも7日前に告知します。変更後もアプリを継続してご利用いただいた場合、改定内容に同意したものとみなします。</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">9</span>お問い合わせ</div>
+    <div class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-info">
+        <h3>プライバシー担当 — nexus11</h3>
+        <a href="mailto:nexus11.second@gmail.com">nexus11.second@gmail.com</a>
+        <p style="font-size:12px;color:var(--sub);margin-top:4px;">お問い合わせ後、営業日3日以内にご返答いたします。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     ES
+══════════════════════════════════ -->
+<div id="panel-es" class="lang-panel">
+  <div class="doc-title">Política de Privacidad</div>
+  <div class="doc-meta">Vigente desde: 17 de junio de 2026 &nbsp;|&nbsp; App: kids of fishing &nbsp;|&nbsp; Desarrollador: nexus11</div>
+
+  <div class="highlight">
+    En kids of fishing, tu privacidad importa tanto como el pez legendario que aún no has capturado. Esta política explica qué datos recopilamos, cómo los utilizamos y cómo los protegemos.
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">1</span>Información que recopilamos</div>
+    <table class="data-table">
+      <tr><th>Dato</th><th>Origen</th><th>Almacenamiento</th><th>Obligatorio</th></tr>
+      <tr><td>Correo electrónico (solo hash SHA-256)</td><td>Ingresado al registrarse como miembro</td><td>Servidor <span class="badge badge-server">Servidor</span></td><td>Opcional (invitados no lo necesitan)</td></tr>
+      <tr><td>Contraseña (solo hash SHA-256)</td><td>Registro / Inicio de sesión</td><td>Servidor <span class="badge badge-server">Servidor</span></td><td>Opcional (solo miembros)</td></tr>
+      <tr><td>Progreso del juego (nivel, XP, plata)</td><td>Jugabilidad</td><td>Dispositivo + Servidor <span class="badge badge-local">Local</span><span class="badge badge-server">Servidor</span></td><td>Obligatorio</td></tr>
+      <tr><td>Inventario (cañas, flotadores, objetos)</td><td>Compras / recompensas en el juego</td><td>Dispositivo + Servidor <span class="badge badge-local">Local</span><span class="badge badge-server">Servidor</span></td><td>Obligatorio</td></tr>
+      <tr><td>Registros de capturas (especie, peso, hora)</td><td>Jugabilidad</td><td>Solo dispositivo <span class="badge badge-local">Local</span></td><td>Obligatorio</td></tr>
+      <tr><td>Enciclopedia de peces</td><td>Jugabilidad</td><td>Solo dispositivo <span class="badge badge-local">Local</span></td><td>Obligatorio</td></tr>
+      <tr><td>Configuración de la app (idioma, sonido, equipo)</td><td>Preferencias del usuario</td><td>Solo dispositivo <span class="badge badge-local">Local</span></td><td>Obligatorio</td></tr>
+      <tr><td>Idioma del dispositivo</td><td>Detección automática del sistema</td><td>Solo dispositivo <span class="badge badge-local">Local</span></td><td>Obligatorio</td></tr>
+    </table>
+    <div class="sec-body">
+      <p>⛔ NO recopilamos: ubicación, contactos, acceso a cámara/micrófono, identificadores publicitarios (IDFA) ni datos biométricos.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">2</span>Cómo usamos tu información</div>
+    <div class="sec-body">
+      <ul>
+        <li>Para proporcionar el servicio de juego y gestionar tu cuenta</li>
+        <li>Para guardar el progreso y restaurar datos al cambiar de dispositivo</li>
+        <li>Para procesar compras integradas y entregar artículos adquiridos</li>
+        <li>Para operar eventos y entregar actualizaciones del juego</li>
+        <li>Para responder solicitudes de soporte e investigar errores</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">3</span>Servicios de terceros</div>
+    <table class="data-table">
+      <tr><th>Servicio</th><th>Función</th><th>Datos transmitidos</th><th>Política de privacidad</th></tr>
+      <tr><td>Apple App Store</td><td>Procesamiento de compras integradas</td><td>Gestionado por Apple — no recibimos datos de pago</td><td>apple.com/legal/privacy</td></tr>
+      <tr><td>open.er-api.com</td><td>Consulta de tipos de cambio en tiempo real</td><td>Ninguno — solo solicitud GET anónima</td><td>exchangerate-api.com</td></tr>
+      <tr><td>cdn.nexus11standalone.com</td><td>Entrega de activos del juego (imágenes, vídeo, datos)</td><td>Ninguno — solo descarga de activos</td><td>Operado internamente</td></tr>
+    </table>
+    <div class="sec-body">
+      <p>kids of fishing no incluye SDKs de publicidad (Google Ads, Meta/Facebook, etc.) ni frameworks de análisis de terceros.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">4</span>Seguridad de los datos</div>
+    <div class="sec-body">
+      <ul>
+        <li>El correo electrónico y la contraseña se procesan con SHA-256 en tu dispositivo antes de transmitirse. Ningún valor en texto claro se almacena en ningún lugar.</li>
+        <li>Todas las comunicaciones con el servidor están cifradas mediante HTTPS (TLS).</li>
+        <li>Los datos locales (base de datos SQLite, caché de archivos) se almacenan de forma aislada en el entorno sandbox de iOS.</li>
+        <li>Los registros de la enciclopedia se guardan fuera de las rutas de copia de seguridad de iCloud para evitar sincronizaciones innecesarias.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">5</span>Retención y eliminación de datos</div>
+    <div class="sec-body">
+      <ul>
+        <li>Datos locales: se eliminan automáticamente al desinstalar la app.</li>
+        <li>Datos del servidor: se eliminan en un plazo de 30 días desde la solicitud de eliminación de cuenta.</li>
+        <li>Cuentas de invitado: se eliminan automáticamente tras 1 año de inactividad.</li>
+        <li>Puedes restablecer la caché local y los datos del juego desde la pantalla de Configuración de la app.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">6</span>Privacidad infantil</div>
+    <div class="sec-body">
+      <p>kids of fishing no recopila intencionadamente información personal de menores de 13 años (o 14 en determinadas jurisdicciones). Si tomamos conocimiento de que se han recopilado datos de un menor sin el consentimiento adecuado, los eliminaremos de inmediato. Los padres o tutores que crean que los datos de su hijo han sido recopilados deben contactarnos de inmediato.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">7</span>Tus derechos</div>
+    <div class="sec-body">
+      <ul>
+        <li>Puedes solicitar el acceso, la corrección o la eliminación de tus datos personales en cualquier momento.</li>
+        <li>Puedes eliminar tu cuenta y todos los datos asociados contactándonos.</li>
+        <li>Puedes usar la app como invitado sin proporcionar información personal.</li>
+        <li>Todas las solicitudes se gestionan a través del correo de contacto que aparece a continuación.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">8</span>Cambios en esta política</div>
+    <div class="sec-body">
+      <p>Si esta política se actualiza, te notificaremos mediante un aviso dentro de la app o por correo electrónico. Los cambios importantes se comunicarán con al menos 7 días de antelación. El uso continuado de la app tras los cambios constituye la aceptación de la política revisada.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">9</span>Contacto</div>
+    <div class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-info">
+        <h3>Responsable de privacidad — nexus11</h3>
+        <a href="mailto:nexus11.second@gmail.com">nexus11.second@gmail.com</a>
+        <p style="font-size:12px;color:var(--sub);margin-top:4px;">Respondemos en un plazo de 3 días hábiles.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     ZH
+══════════════════════════════════ -->
+<div id="panel-zh" class="lang-panel">
+  <div class="doc-title">隐私政策</div>
+  <div class="doc-meta">生效日期：2026年6月17日 &nbsp;|&nbsp; 应用：钓鱼王 (kids of fishing) &nbsp;|&nbsp; 开发者：nexus11</div>
+
+  <div class="highlight">
+    钓鱼王重视您的隐私，就像重视那条还没钓到的传说大鱼一样。本政策说明我们收集哪些信息、如何使用以及如何保护这些信息。
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">1</span>我们收集的信息</div>
+    <table class="data-table">
+      <tr><th>信息项目</th><th>收集来源</th><th>存储位置</th><th>是否必须</th></tr>
+      <tr><td>电子邮件地址（仅SHA-256哈希值）</td><td>注册会员时手动填写</td><td>服务器 <span class="badge badge-server">服务器</span></td><td>可选（游客无需提供）</td></tr>
+      <tr><td>密码（仅SHA-256哈希值）</td><td>注册 / 登录</td><td>服务器 <span class="badge badge-server">服务器</span></td><td>可选（仅限会员）</td></tr>
+      <tr><td>游戏进度数据（等级、XP、银币）</td><td>游戏过程</td><td>设备＋服务器 <span class="badge badge-local">本地</span><span class="badge badge-server">服务器</span></td><td>必须</td></tr>
+      <tr><td>背包物品（鱼竿、浮标、道具）</td><td>游戏内购买 / 获得</td><td>设备＋服务器 <span class="badge badge-local">本地</span><span class="badge badge-server">服务器</span></td><td>必须</td></tr>
+      <tr><td>钓鱼记录（鱼种、重量、时间）</td><td>游戏过程</td><td>仅设备 <span class="badge badge-local">本地</span></td><td>必须</td></tr>
+      <tr><td>图鉴记录（已钓鱼种列表）</td><td>游戏过程</td><td>仅设备 <span class="badge badge-local">本地</span></td><td>必须</td></tr>
+      <tr><td>应用设置（语言、音效、装备选择）</td><td>用户配置</td><td>仅设备 <span class="badge badge-local">本地</span></td><td>必须</td></tr>
+      <tr><td>设备语言信息</td><td>系统自动检测</td><td>仅设备 <span class="badge badge-local">本地</span></td><td>必须</td></tr>
+    </table>
+    <div class="sec-body">
+      <p>⛔ 我们不收集：位置信息、通讯录、摄像头/麦克风权限、广告标识符（IDFA）、生物特征信息。</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">2</span>信息的使用目的</div>
+    <div class="sec-body">
+      <ul>
+        <li>提供游戏服务及管理账户（登录、数据同步）</li>
+        <li>保存游戏进度，在更换设备时恢复数据</li>
+        <li>处理应用内购买并发放相应道具</li>
+        <li>运营活动及推送游戏更新</li>
+        <li>处理用户咨询及排查错误</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">3</span>第三方服务</div>
+    <table class="data-table">
+      <tr><th>服务</th><th>用途</th><th>传输数据</th><th>隐私政策</th></tr>
+      <tr><td>Apple App Store</td><td>应用内购买处理</td><td>由Apple直接处理，我们不接收任何支付信息</td><td>apple.com/legal/privacy</td></tr>
+      <tr><td>open.er-api.com</td><td>实时汇率查询</td><td>无（仅匿名GET请求）</td><td>exchangerate-api.com</td></tr>
+      <tr><td>cdn.nexus11standalone.com</td><td>游戏素材分发（图片、视频、数据）</td><td>无（仅下载资源）</td><td>自主运营</td></tr>
+    </table>
+    <div class="sec-body">
+      <p>钓鱼王不包含任何广告SDK（Google广告、Meta/Facebook等）或第三方数据分析框架。</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">4</span>数据安全</div>
+    <div class="sec-body">
+      <ul>
+        <li>电子邮件地址和密码均在您的设备上经SHA-256哈希处理后再传输至服务器，任何地方均不存储明文信息。</li>
+        <li>所有服务器通信均通过HTTPS（TLS）加密传输。</li>
+        <li>本地数据（SQLite数据库、文件缓存）存储于iOS应用沙盒内，与其他应用隔离。</li>
+        <li>图鉴记录存储于iCloud备份排除路径，防止不必要的云端同步。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">5</span>数据保留与删除</div>
+    <div class="sec-body">
+      <ul>
+        <li>本地数据：卸载应用时自动从设备删除。</li>
+        <li>服务器数据：收到账户删除申请后30天内完成删除。</li>
+        <li>游客账户：最后一次活动后1年无操作将自动删除。</li>
+        <li>您可随时在应用"设置"界面重置本地缓存及游戏数据。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">6</span>儿童隐私保护</div>
+    <div class="sec-body">
+      <p>钓鱼王不会故意收集13岁以下（部分地区为14岁以下）未成年人的个人信息。如发现已收集到未成年人信息，我们将立即予以删除。家长或监护人如发现相关情况，请立即联系我们。</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">7</span>您的权利</div>
+    <div class="sec-body">
+      <ul>
+        <li>您可随时申请查阅、更正或删除您的个人信息。</li>
+        <li>您可通过联系我们来删除账户及所有相关数据。</li>
+        <li>您可以游客身份使用本应用，无需提供任何个人信息。</li>
+        <li>所有申请均通过以下联系邮箱受理。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">8</span>政策变更说明</div>
+    <div class="sec-body">
+      <p>本政策如有更新，我们将通过应用内通知或电子邮件提前告知。重大变更将在生效前至少7天发出通知。变更后继续使用本应用，即视为您接受修订后的政策内容。</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title"><span class="num">9</span>联系我们</div>
+    <div class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-info">
+        <h3>隐私保护负责人 — nexus11</h3>
+        <a href="mailto:nexus11.second@gmail.com">nexus11.second@gmail.com</a>
+        <p style="font-size:12px;color:var(--sub);margin-top:4px;">我们将在收到咨询后3个工作日内回复。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  낚시의아이 (kids of fishing) &nbsp;·&nbsp; 개인정보처리방침 / Privacy Policy &nbsp;·&nbsp; v1.4.1 &nbsp;·&nbsp; 2026-06-17<br>
+  <span style="margin-top:6px;display:block;">© 2026 nexus11. All rights reserved.</span>
+</footer>
+
+<script>
+  function showLang(lang, btn) {
+    document.querySelectorAll('.lang-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-' + lang).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
